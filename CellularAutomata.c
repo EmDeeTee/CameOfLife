@@ -38,12 +38,11 @@ int get_alive_n_cells(int x, int y) {
 }
 
 void next_generation(void) {
-    int temp_cells[SIZE][SIZE] = { 0 };
+	int temp_cells[SIZE][SIZE] = { 0 };
 	memcpy(temp_cells, cells, sizeof(cells));
 
-    for (size_t i = 0; i < SIZE; i++) {
-        for (size_t ii = 0; ii < SIZE; ii++) {
-			
+	for (size_t i = 0; i < SIZE; i++) {
+		for (size_t ii = 0; ii < SIZE; ii++) {
 			if (cells[ii][i] == 1) {
 				if (get_alive_n_cells(ii, i) < 2) {
 					temp_cells[ii][i] = 0;
@@ -58,12 +57,12 @@ void next_generation(void) {
 			else if (cells[ii][i] == 0 && get_alive_n_cells(ii, i) == 3) {
 				temp_cells[ii][i] = 1;
 			}
-        }
-    }
+		}
+	}
 
 	memcpy(cells, temp_cells, sizeof(cells));
 
-    generation_num++;
+	generation_num++;
 }
 
 void loop() {
